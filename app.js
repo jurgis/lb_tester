@@ -1,13 +1,15 @@
+const version = 'v1.0.1'
+
 const http = require('http');
 const os = require('os');
 
-console.log("Server starting...");
+console.log(`lb_tester ${version} starting...`);
 
 var handler = function(request, response) {
-  console.log("Received request from " + request.connection.remoteAddress);
+  console.log(`Received request from ${request.connection.remoteAddress}`);
 
   response.writeHead(200);
-  response.end("Hostname: " + os.hostname() + "\n");
+  response.end(`lb_tester ${version}, hostname: ${os.hostname()}\n`);
 };
 
 var www = http.createServer(handler);
